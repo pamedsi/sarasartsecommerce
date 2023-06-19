@@ -1,0 +1,2 @@
+- Histórico de logins:
+    Criar tabela com histórico de logins dos usuários, colunas: id, userID, when, device/browser, IP/location.
