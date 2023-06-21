@@ -30,4 +30,7 @@ public class AppExceptionHandler {
     public ResponseEntity<String> AlreadyRegistered () {
         return null;
     }
+
+//    @ExceptionHandler(NullPointerException.class)
+//    public ResponseEntity<String> NullError () { return null; }
 }
