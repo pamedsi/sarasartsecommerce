@@ -6,9 +6,8 @@ import java.util.Date;
 public class LoginForm {
     private String login;
     private String password;
-    private LocalDate agora;
 
-    // Getters e Setters
+    // Getters
 
     public String getLogin() {
         return login;
@@ -16,9 +15,5 @@ public class LoginForm {
 
     public String getPassword() {
         return password;
-    }
-
-    public LocalDate getAgora() {
-        return agora;
     }
 }
