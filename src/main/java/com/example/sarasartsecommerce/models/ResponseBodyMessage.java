@@ -1,5 +1,8 @@
 package com.example.sarasartsecommerce.models;
 
+import lombok.Getter;
+
+@Getter
 public class ResponseBodyMessage {
     private final String message;
     private final int status;
@@ -8,10 +11,4 @@ public class ResponseBodyMessage {
         this.message = message;
         this.status = status;
     }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public int getStatus() { return status; }
 }

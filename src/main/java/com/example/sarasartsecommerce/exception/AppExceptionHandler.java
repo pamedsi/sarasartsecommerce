@@ -1,5 +1,6 @@
 package com.example.sarasartsecommerce.exception;
 
+import com.google.i18n.phonenumbers.NumberParseException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +31,9 @@ public class AppExceptionHandler {
     public ResponseEntity<String> AlreadyRegistered () {
         return null;
     }
+
+    @ExceptionHandler (NumberParseException.class)
+    public ResponseEntity<String> InvalidPhoneNumber () { return null; }
 
 //    @ExceptionHandler(NullPointerException.class)
 //    public ResponseEntity<String> NullError () { return null; }
