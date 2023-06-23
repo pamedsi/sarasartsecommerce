@@ -1,6 +1,6 @@
 package com.example.sarasartsecommerce.dto;
 
-public class loginFormDTO {
+public class SignInFormDTO {
     private String login;
     private String password;
 
