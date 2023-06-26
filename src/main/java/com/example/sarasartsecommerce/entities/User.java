@@ -41,6 +41,7 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "address_id"))
     private List <Address> addresses;
+    private Boolean active;
 
     public User(SignUpFormDTO user){
         name = user.getName();
@@ -51,6 +52,27 @@ public class User {
         userRole = UserRole.CLIENT;
         birthDate = LocalDate.parse(user.getBirthDate()); // "YYYY-MM-DD"
         userSince = LocalDateTime.now();
+        active = true;
+    }
+
+    public void setUserRole(UserRole userRole) {
+        this.userRole = userRole;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 
     public void setPassword(String password) { this.password = password;}

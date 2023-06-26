@@ -1,6 +1,5 @@
 package com.example.sarasartsecommerce.validation;
 
-import com.example.sarasartsecommerce.models.EmailOrPhoneNumber;
 import com.example.sarasartsecommerce.models.LoginInput;
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
@@ -8,12 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.apache.commons.validator.routines.EmailValidator;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-
 @NoArgsConstructor
 @Getter
-public class LoginInputValidator implements ConstraintValidator<EmailOrPhoneNumber, String> {
+public class LoginInputValidator  {
     private LoginInput loginInput;
 
     private Boolean isPhoneNumber(String phoneNumber) throws NumberParseException {
@@ -31,8 +27,8 @@ public class LoginInputValidator implements ConstraintValidator<EmailOrPhoneNumb
         else loginInput = LoginInput.ERROR;
     }
 
-    @Override
-    public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
-        return loginInput != LoginInput.ERROR;
-    }
+//    @Override
+//    public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext) {
+//        return loginInput != LoginInput.ERROR;
+//    }
 }

@@ -1,8 +1,10 @@
 package com.example.sarasartsecommerce.exception;
 
+import com.example.sarasartsecommerce.models.ResponseBodyMessage;
 import com.google.i18n.phonenumbers.NumberParseException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -22,9 +24,9 @@ public class AppExceptionHandler {
         return null;
     }
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity <String> InvalidInput () {
-//        return ResponseEntity.notFound().build();
-        return null;
+    public ResponseEntity <?> InvalidInput () {
+        String message = "Campo de login ou senha vazios!";
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ResponseBodyMessage(message));
     }
 
     @ExceptionHandler(DataIntegrityViolationException.class)
