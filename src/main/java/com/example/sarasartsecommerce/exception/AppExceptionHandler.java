@@ -25,7 +25,7 @@ public class AppExceptionHandler {
     }
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity <?> InvalidInput () {
-        String message = "Campo de login ou senha vazios!";
+        String message = "Login ou senha incorretos!";
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ResponseBodyMessage(message));
     }
 

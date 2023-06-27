@@ -5,6 +5,7 @@ import com.example.sarasartsecommerce.dto.SignUpFormDTO;
 import com.example.sarasartsecommerce.repositories.UserRepository;
 import com.example.sarasartsecommerce.services.UserService;
 import com.google.i18n.phonenumbers.NumberParseException;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,8 +34,7 @@ public class UserController {
     //    Read
     @PostMapping
     @RequestMapping (value = "/signin")
-//    public ResponseEntity<?> signIn(@Valid @RequestBody SignInFormDTO loginForm) throws NumberParseException {
-    public ResponseEntity<?> signIn(@Valid @RequestBody SignInFormDTO loginForm) {//throws NumberParseException {
+    public ResponseEntity<?> signIn(@Valid @RequestBody SignInFormDTO loginForm) {
 
 //        LoginInputValidator validator = new LoginInputValidator(loginForm.getLogin());
 //        System.out.println(loginForm.getLogin());

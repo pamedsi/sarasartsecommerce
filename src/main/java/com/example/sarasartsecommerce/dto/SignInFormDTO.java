@@ -1,13 +1,11 @@
 package com.example.sarasartsecommerce.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import lombok.Getter;
+import com.example.sarasartsecommerce.validation.ValidEmailOrPhoneNumber;
+import com.example.sarasartsecommerce.validation.ValidPassword;
 
-
-@Getter
-public class SignInFormDTO {
-    @NotBlank // (message = "O nome de usuário é obrigatório")
-    private String login;
-    @NotBlank (message = "A senha é obrigatória")
-    private String password;
-}
+public record SignInFormDTO (
+    @ValidEmailOrPhoneNumber
+    String login,
+    @ValidPassword
+    String password
+) {}
