@@ -1,5 +1,6 @@
 package com.example.sarasartsecommerce.validation;
 
+import com.example.sarasartsecommerce.utils.PasswordRegex;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 

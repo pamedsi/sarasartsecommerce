@@ -18,7 +18,7 @@ import java.util.Objects;
 
 @Service
 public class UserService {
-    private UserRepository repository;
+    private final UserRepository repository;
 
     @Autowired
     public UserService(UserRepository repository) {
@@ -26,14 +26,15 @@ public class UserService {
     }
 
     // Create
-    public ResponseEntity<?> signUp(SignUpFormDTO user, UserRepository repository) {
+    public ResponseEntity<?> signUp(SignUpFormDTO user) {
         User newUser = new User(user);
         repository.save(newUser);
         return ResponseEntity.ok(new ResponseBodyMessage("Usuário cadastrado!"));
     }
 
     // Read
-    public ResponseEntity<?> signIn (SignInFormDTO loginForm, UserRepository repository) throws NumberParseException {
+    public ResponseEntity<?> signIn(SignInFormDTO loginForm) throws NumberParseException {
+
         LoginInput loginInput = new LoginInputTypeDetector(loginForm.login()).getLoginInput();
         List<User> queryResult = null;
 
@@ -42,6 +43,7 @@ public class UserService {
             case EMAIL -> queryResult = repository.findSingleByEmail(loginForm.login());
             case PHONE_NUMBER -> queryResult = repository.findSingleByPhoneNumber(loginForm.login());
         }
+
         String unauthorizedMessage = "Login ou senha incorretos!";
         if (queryResult.size() == 0) return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ResponseBodyMessage(unauthorizedMessage));
         boolean correctPassword = Objects.equals(queryResult.get(0).getPassword(), loginForm.password());

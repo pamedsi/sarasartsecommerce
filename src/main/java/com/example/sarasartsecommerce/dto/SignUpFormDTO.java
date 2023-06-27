@@ -1,14 +1,18 @@
 package com.example.sarasartsecommerce.dto;
 
 import com.example.sarasartsecommerce.models.UserRole;
+import com.example.sarasartsecommerce.validation.ValidPassword;
+import jakarta.validation.constraints.Email;
 import lombok.Getter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-@Getter
-public class SignUpFormDTO {
-    private String name;
-    private String email;
-    private String phoneNumber;
-    private String password;
-    private String birthDate;
-}
+public record SignUpFormDTO (
+    String name,
+    @Email
+    String email,
+    String phoneNumber,
+    @ValidPassword
+    String password,
+    LocalDate birthDate // "YYYY-MM-DD"
+){}

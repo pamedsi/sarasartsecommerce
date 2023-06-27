@@ -26,9 +26,11 @@ public class User {
     private UserRole userRole;
     @Column (nullable = false)
     private String name;
+    @Column
+    private String username;
     @Column (nullable = false, unique = true)
     private String email;
-    @Column (nullable = true, unique = true)
+    @Column (unique = true)
     private String phoneNumber;
     @Column (nullable = false)
     private String password;
@@ -36,6 +38,19 @@ public class User {
     private LocalDate birthDate;
     @Column (updatable = false)
     private LocalDateTime userSince;
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setUserSince(LocalDateTime userSince) {
+        this.userSince = userSince;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
     @ManyToMany
     @JoinTable(name = "user_address",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -44,13 +59,13 @@ public class User {
     private Boolean active;
 
     public User(SignUpFormDTO user){
-        name = user.getName();
-        email = user.getEmail();
-        if (user.getPhoneNumber() != null) phoneNumber = user.getPhoneNumber();
+        name = user.name();
+        email = user.email();
+        if (user.phoneNumber() != null) phoneNumber = user.phoneNumber();
         identifier = UUID.randomUUID().toString();
-        password = user.getPassword();
+        password = user.password();
         userRole = UserRole.CLIENT;
-        birthDate = LocalDate.parse(user.getBirthDate()); // "YYYY-MM-DD"
+        birthDate = user.birthDate(); // "YYYY-MM-DD"
         userSince = LocalDateTime.now();
         active = true;
     }

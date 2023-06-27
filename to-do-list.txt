@@ -2,3 +2,5 @@
     Criar tabela com histórico de logins dos usuários, colunas: id, userID, when, device/browser, IP/location.
 - Validações para cadastro:
     Criar validadores para todos os campos de cadastro de novo usuário
+- Evitar repetições:
+    Procurar como não repetir o método de validação de email e telefone para descobrir qual input foi fornecido.
